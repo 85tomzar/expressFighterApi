@@ -2,7 +2,7 @@
 GET http://localhost:3000/api/fighters/
 
 ### Get a single fighter
-GET http://localhost:3000/api/fighters/test
+GET http://localhost:3000/api/fighters/r-JGvstLOfLb1J41NSUtw
 
 ### Create a fighter
 POST http://localhost:3000/api/fighters/
