@@ -1,9 +1,15 @@
 import { Request, Response } from "express";
 import { Fighter } from "./fighter.model";
-import { getFighterById } from "./fighterdata.handler";
+import {
+  addFighter,
+  deleteFighterById,
+  getFighterById,
+  getFighters,
+  updateFighterById,
+} from "./fighterdata.handler";
 
 export const getAllFighters = (req: Request, res: Response) => {
-  res.status(200).json("this is all fighters");
+  res.status(200).json(getFighters());
 };
 
 export const getFighter = (req: Request, res: Response) => {
@@ -12,13 +18,16 @@ export const getFighter = (req: Request, res: Response) => {
 };
 
 export const createFighter = (req: Request, res: Response) => {
+  addFighter(req.body);
   res.status(200).json("fighter created");
 };
 
 export const updateFighter = (req: Request, res: Response) => {
+  updateFighterById(req.body);
   res.status(200).json("fighter updated");
 };
 
 export const deleteFighter = (req: Request, res: Response) => {
+  deleteFighterById(req.params.id);
   res.status(200).json("fighter deleted");
 };
