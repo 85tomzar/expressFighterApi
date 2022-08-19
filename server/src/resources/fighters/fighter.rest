@@ -1,0 +1,26 @@
+### Get all fighters
+GET http://localhost:3000/api/fighters/
+
+### Get a single fighter
+GET http://localhost:3000/api/fighters/test
+
+### Create a fighter
+POST http://localhost:3000/api/fighters/
+Content-Type: application/json
+
+{
+    "name": "Jon Jones",
+    "nickname": "Bones"
+}
+
+### Update fighter
+PUT http://localhost:3000/api/fighters/test
+Content-Type: application/json
+
+{
+    "name": "Jon Jones",
+    "nickname": "Ben"
+}
+
+### Delete fighter
+DELETE http://localhost:3000/api/fighters/test
