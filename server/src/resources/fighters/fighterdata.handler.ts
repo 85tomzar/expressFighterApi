@@ -17,9 +17,12 @@ export const getFighterById = (id: string) => {
 export const addFighter = (fighter: Fighter) => {
   const fighters = getFighters();
   fighters.push(fighter);
-  fs.writeFileSync(
+  fs.writeFile(
     "./src/resources/fighters/fighterdata.json",
-    JSON.stringify(fighters)
+    JSON.stringify(fighters),
+    (err) => {
+      if (err) console.log(err);
+    }
   );
 };
 
@@ -27,9 +30,12 @@ export const updateFighterById = (fighter: Fighter) => {
   const fighters = getFighters();
   const fighterIndex = fighters.findIndex((f) => f.id === fighter.id);
   fighters[fighterIndex] = fighter;
-  fs.writeFileSync(
+  fs.writeFile(
     "./src/resources/fighters/fighterdata.json",
-    JSON.stringify(fighters)
+    JSON.stringify(fighters),
+    (err) => {
+      if (err) console.log(err);
+    }
   );
 };
 
@@ -37,8 +43,11 @@ export const deleteFighterById = (id: string) => {
   const fighters = getFighters();
   const fighterIndex = fighters.findIndex((f) => f.id === id);
   fighters.splice(fighterIndex, 1);
-  fs.writeFileSync(
+  fs.writeFile(
     "./src/resources/fighters/fighterdata.json",
-    JSON.stringify(fighters)
+    JSON.stringify(fighters),
+    (err) => {
+      if (err) console.log(err);
+    }
   );
 };
