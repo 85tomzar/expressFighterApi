@@ -1,4 +1,5 @@
 import express from "express";
+import { generateId, validateFighterBody } from "../../middlewares";
 import {
   createFighter,
   deleteFighter,
@@ -11,7 +12,7 @@ const fighterRouter = express
   .Router()
   .get("/", getAllFighters)
   .get("/:id", getFighter)
-  .post("/", createFighter)
+  .post("/", generateId, validateFighterBody, createFighter)
   .put("/:id", updateFighter)
   .delete("/:id", deleteFighter);
 
