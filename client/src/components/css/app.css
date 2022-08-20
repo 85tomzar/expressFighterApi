@@ -1,0 +1,11 @@
+header {
+  background-color: rgb(0, 0, 0);
+  padding: 1rem 4rem;
+  position: fixed;
+  width: 100%;
+  border-bottom: 2px solid #ccc;
+}
+
+.logo {
+  width: 150px;
+}
