@@ -25,3 +25,13 @@ export const logger = (req: Request, res: Response, next: NextFunction) => {
   console.log(`${req.ip} requested ${req.method} on ${req.path}`);
   next();
 };
+
+export const errorHandler = (
+  err: Error,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  console.log(err);
+  res.status(500).json(err.message);
+};
