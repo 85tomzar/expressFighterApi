@@ -14,20 +14,32 @@ export const getAllFighters = (req: Request, res: Response) => {
 
 export const getFighter = (req: Request, res: Response) => {
   const fighter = getFighterById(req.params.id);
-  res.status(200).json(fighter);
+  fighter
+    ? res.status(200).json(fighter)
+    : res.status(404).json(`no fighter with id ${req.params.id}`);
 };
 
 export const createFighter = (req: Request, res: Response) => {
   addFighter(req.body);
-  res.status(200).json("fighter created");
+  res.status(201).json(req.body);
 };
 
 export const updateFighter = (req: Request, res: Response) => {
-  updateFighterById(req.body);
-  res.status(200).json("fighter updated");
+  const fighter = getFighterById(req.params.id);
+  if (fighter) {
+    updateFighterById(req.body);
+    res.status(200).json("Fighter updated successfully");
+  } else {
+    res.status(404).json(`no fighter with id ${req.params.id}`);
+  }
 };
 
 export const deleteFighter = (req: Request, res: Response) => {
-  deleteFighterById(req.params.id);
-  res.status(200).json("fighter deleted");
+  const fighter = getFighterById(req.params.id);
+  if (fighter) {
+    deleteFighterById(req.params.id);
+    res.status(200).json("fighter deleted");
+  } else {
+    res.status(404).json(`no fighter with id ${req.params.id}`);
+  }
 };

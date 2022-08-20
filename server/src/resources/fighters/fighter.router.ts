@@ -13,7 +13,7 @@ const fighterRouter = express
   .get("/", getAllFighters)
   .get("/:id", getFighter)
   .post("/", generateId, validateFighterBody, createFighter)
-  .put("/:id", updateFighter)
+  .put("/:id", validateFighterBody, updateFighter)
   .delete("/:id", deleteFighter);
 
 export default fighterRouter;

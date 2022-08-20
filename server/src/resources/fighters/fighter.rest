@@ -2,7 +2,7 @@
 GET http://localhost:3000/api/fighters/
 
 ### Get a single fighter
-GET http://localhost:3000/api/fighters/r-JGvstLOfLb1J41NSUtw
+GET http://localhost:3000/api/fighters/e5QehmnrRhHUAajbNxMtw
 
 ### Create a fighter
 POST http://localhost:3000/api/fighters/
@@ -25,16 +25,16 @@ PUT http://localhost:3000/api/fighters/e5QehmnrRhHUAajbNxMtw
 Content-Type: application/json
 
 {
-    "id": "e5QehmnrRhHUAajbNxMtw",
-    "name": "Abdul",
-    "nickname": "N/A",
-    "division": "Middleweight Division",
-    "record": "11-5-0 (W-L-D)",
-    "age": "36",
-    "height": "70.00",
-    "weight": "186.00",
-    "reach": "73.00",
-    "imgURL": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-04/67130%252Fprofile-galery%252Ffullbodyleft-picture%252FALHASSAN_ABDUL_L_04-17.png?VersionId=null&itok=CQTIWhHO"
+  "id": "e5QehmnrRhHUAajbNxMtw",
+  "name": "Abdul Razak Alhassan",
+  "nickname": "Mosarn",
+  "division": "Middleweight Division",
+  "record": "11-5-0 (W-L-D)",
+  "age": "36",
+  "height": "70.00",
+  "weight": "186.00",
+  "reach": "73.00",
+  "imgURL": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2021-04/67130%252Fprofile-galery%252Ffullbodyleft-picture%252FALHASSAN_ABDUL_L_04-17.png?VersionId=null&itok=CQTIWhHO"
 }
 
 ### Delete fighter
