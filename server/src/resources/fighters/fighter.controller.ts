@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { Fighter } from "./fighter.model";
 import {
   addFighter,
@@ -12,11 +12,16 @@ export const getAllFighters = (req: Request, res: Response) => {
   res.status(200).json(getFighters());
 };
 
-export const getFighter = (req: Request, res: Response) => {
+export const getFighter = (req: Request, res: Response, next: NextFunction) => {
   const fighter = getFighterById(req.params.id);
-  fighter
-    ? res.status(200).json(fighter)
-    : res.status(404).json(`no fighter with id ${req.params.id}`);
+  if (fighter) {
+    res.status(200).json(fighter);
+  } else {
+    next();
+  }
+  // fighter
+  //   ? res.status(200).json(fighter)
+  //   : res.status(404).json(`no fighter with id ${req.params.id}`);
 };
 
 export const createFighter = (req: Request, res: Response) => {

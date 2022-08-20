@@ -35,3 +35,11 @@ export const errorHandler = (
   console.log(err);
   res.status(500).json(err.message);
 };
+
+export const notFoundHandler = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  res.status(404).json("Resource does not exist.");
+};
