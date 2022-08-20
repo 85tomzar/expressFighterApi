@@ -1,0 +1,9 @@
+.card {
+  background: rgba(255, 255, 255, 0.7) !important;
+  transition: all 200ms;
+}
+
+.card:hover {
+  scale: 1.05;
+  background: rgba(255, 255, 255, 1) !important;
+}
