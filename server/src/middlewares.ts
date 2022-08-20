@@ -1,3 +1,4 @@
+import { ResolveOptions } from "dns";
 import { NextFunction, Request, Response } from "express";
 import { nanoid } from "nanoid";
 import { fighterSchema } from "./resources/fighters/fighter.model";
@@ -18,5 +19,9 @@ export const validateFighterBody = (
   } else {
     next();
   }
-  //   result.error ? res.status(400).json(result.error.message) : next();
+};
+
+export const logger = (req: Request, res: Response, next: NextFunction) => {
+  console.log(`${req.ip} requested ${req.method} on ${req.path}`);
+  next();
 };
