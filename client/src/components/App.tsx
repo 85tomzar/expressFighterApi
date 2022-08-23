@@ -5,11 +5,13 @@ import "./css/app.css";
 import FighterCard from "./FighterCard";
 import Fighter from "../models/FighterModel";
 import FighterModal from "./FighterModal";
+import CreateFighterModal from "./CreateFighterModal";
 
 function App() {
   const [fighters, setFighters] = useState([] as Fighter[]);
   const [selectedFighter, setSelectedFighter] = useState({} as Fighter);
   const [fighterModalOpen, setFighterModalOpen] = useState(false);
+  const [createModalOpen, setCreateModalOpen] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:3000/api/fighters")
@@ -39,7 +41,10 @@ function App() {
             alt="UFC logo"
             className="logo"
           />
-          <div className="d-flex align-items-center gap-1">
+          <div
+            className="d-flex align-items-center gap-1"
+            onClick={() => setCreateModalOpen(true)}
+          >
             <i className="fa-solid fa-plus"></i> <span>Add fighter</span>
           </div>
         </div>
@@ -58,6 +63,14 @@ function App() {
             fighter={selectedFighter}
             onHide={() => setFighterModalOpen(false)}
           />
+        </Modal>
+        <Modal
+          size="lg"
+          show={createModalOpen}
+          onHide={() => setCreateModalOpen(false)}
+          onEscapeKeyDown={() => setCreateModalOpen(false)}
+        >
+          <CreateFighterModal />
         </Modal>
       </main>
     </>
