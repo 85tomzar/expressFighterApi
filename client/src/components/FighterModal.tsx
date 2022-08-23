@@ -11,10 +11,36 @@ interface Props {
 export default function FighterModal(props: Props) {
   const [editMode, setEditMode] = useState(false);
 
+  const deleteFighter = async (e: any) => {
+    e.preventDefault();
+
+    try {
+      let res = await fetch(
+        `http://localhost:3000/api/fighters/${props.fighter.id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      let resJson = await res.json();
+      if (res.status === 200) {
+        console.log("success!");
+        props.onHide();
+      } else {
+        console.log("Some error occured");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <Modal.Header closeButton closeVariant="white">
-        <i className="fa-solid fa-trash-can" data-content="Delete fighter"></i>
+        <i
+          className="fa-solid fa-trash-can"
+          data-content="Delete fighter"
+          onClick={deleteFighter}
+        ></i>
         <i
           className="fa-solid fa-pen-to-square"
           data-content="Edit fighter"
