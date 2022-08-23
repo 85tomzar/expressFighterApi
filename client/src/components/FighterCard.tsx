@@ -12,6 +12,7 @@ interface Props {
 export default function FighterCard(props: Props) {
   return (
     <Card
+      border="border-0"
       style={{ width: "10rem", cursor: "pointer" }}
       onClick={(event) => props.onclick(props.fighter)}
     >

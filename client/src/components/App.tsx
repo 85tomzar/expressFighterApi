@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
-//import bootstrap
+import { Container, Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/app.css";
 import FighterCard from "./FighterCard";
 import Fighter from "../models/FighterModel";
+import FighterModal from "./FighterModal";
 
 function App() {
-  const [fighters, setFighters] = useState([]);
+  const [fighters, setFighters] = useState([] as Fighter[]);
   const [selectedFighter, setSelectedFighter] = useState({} as Fighter);
+  const [fighterModalOpen, setFighterModalOpen] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:3000/api/fighters")
@@ -20,6 +21,7 @@ function App() {
 
   const handleClick = (fighter: Fighter): void => {
     setSelectedFighter(fighter);
+    setFighterModalOpen(true);
   };
 
   const fighterCards = fighters.map((fighter: Fighter) => {
@@ -37,8 +39,8 @@ function App() {
             alt="UFC logo"
             className="logo"
           />
-          <div>
-            <i className="fa-solid fa-plus"></i> Add fighter
+          <div className="d-flex align-items-center gap-1">
+            <i className="fa-solid fa-plus"></i> <span>Add fighter</span>
           </div>
         </div>
       </header>
@@ -46,6 +48,17 @@ function App() {
         <Container className="d-flex justify-content-center">
           <div className="fighter-container">{fighterCards}</div>
         </Container>
+        <Modal
+          size="lg"
+          show={fighterModalOpen}
+          onHide={() => setFighterModalOpen(false)}
+          onEscapeKeyDown={() => setFighterModalOpen(false)}
+        >
+          <FighterModal
+            fighter={selectedFighter}
+            onHide={() => setFighterModalOpen(false)}
+          />
+        </Modal>
       </main>
     </>
   );

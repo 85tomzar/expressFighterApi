@@ -1,0 +1,124 @@
+i {
+  font-size: 1.3rem;
+  opacity: 0.5;
+  cursor: pointer;
+  position: relative;
+}
+
+i::after {
+  content: attr(data-content);
+  position: absolute;
+  top: -12px;
+  left: 25px;
+  font-size: 0.5rem;
+  width: max-content;
+  transform: translateX(-60%);
+  opacity: 0;
+  display: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+i:hover,
+i:hover::after {
+  opacity: 0.75;
+}
+
+i:hover::after {
+  display: inline;
+}
+
+.modal-header {
+  gap: 1rem;
+  background: #000;
+  z-index: 1;
+}
+
+.modal-body {
+  padding: 0 !important;
+  display: flex;
+}
+
+.modal-content {
+  /* background: url("../../assets/img/card-bg.jpg") !important; */
+  background: black;
+  color: white;
+  border: solid 1px var(--bs-modal-header-border-color) !important;
+  overflow: hidden;
+}
+
+.modal-body img {
+  width: 50%;
+  transition: 200ms;
+}
+
+.small-img {
+  width: 20% !important;
+  transition: 200ms;
+}
+
+.info-container {
+  text-transform: uppercase;
+  width: 50%;
+  top: 0;
+  padding-top: 1rem;
+  transition: top 400ms;
+  position: absolute;
+  right: 0;
+}
+
+.hide-info {
+  top: -30rem;
+  overflow: hidden;
+  transition: 400ms;
+}
+h2 {
+  margin: 0;
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+}
+
+.nickname {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.division {
+  margin: 0.5rem 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.first-name {
+  font-weight: 100;
+}
+
+.record,
+.age,
+.height,
+.weight,
+.reach {
+  /* margin-top: ; */
+  margin: 0.5rem 3rem 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #6c757d;
+  border-width: 50%;
+  font-weight: 500;
+  padding-bottom: 0.3rem;
+}
+
+.record {
+  margin-top: 2.5rem;
+}
+
+.record > span:first-of-type,
+.age > span:first-of-type,
+.height > span:first-of-type,
+.weight > span:first-of-type,
+.reach > span:first-of-type {
+  color: #6c757d;
+  font-size: 0.8rem;
+}
