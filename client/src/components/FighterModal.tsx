@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal } from "react-bootstrap";
+import { Modal, Form, Button } from "react-bootstrap";
 import Fighter from "../models/FighterModel";
 import "./css/fightermodal.css";
 
@@ -10,6 +10,7 @@ interface Props {
 
 export default function FighterModal(props: Props) {
   const [editMode, setEditMode] = useState(false);
+  const [fighter, setFighter] = useState(props.fighter);
 
   const deleteFighter = async (e: any) => {
     e.preventDefault();
@@ -33,6 +34,35 @@ export default function FighterModal(props: Props) {
     }
   };
 
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+
+    console.log(fighter);
+
+    try {
+      let res = await fetch(
+        `http://localhost:3000/api/fighters/${fighter.id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(fighter),
+        }
+      );
+      let resJson = await res.json();
+      if (res.status === 200) {
+        console.log("success!");
+      } else {
+        console.log("Some error occured");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleChange = (e: any) => {
+    setFighter({ ...fighter, [e.target.name]: e.target.value });
+  };
+
   return (
     <>
       <Modal.Header closeButton closeVariant="white">
@@ -51,8 +81,91 @@ export default function FighterModal(props: Props) {
         <img
           src={props.fighter.imgURL}
           alt={props.fighter.name}
-          className={editMode ? "small-img" : ""}
+          // className={editMode ? "small-img" : ""}
         />
+
+        <div
+          className={editMode ? "edit-container" : "edit-container hide-edit"}
+        >
+          <Form onSubmit={handleSubmit}>
+            <Form.Group>
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder={fighter.name}
+                name="name"
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Nickname</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder={fighter.nickname}
+                name="nickname"
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Record</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder={fighter.record}
+                name="record"
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Division</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder={fighter.division}
+                name="division"
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Age</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder={fighter.age}
+                name="age"
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Height</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder={fighter.height}
+                name="height"
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Weight</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder={fighter.weight}
+                name="weight"
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Reach</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder={fighter.reach}
+                name="reach"
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Save changes
+            </Button>
+          </Form>
+        </div>
+
         <div
           className={editMode ? "info-container hide-info" : "info-container"}
         >

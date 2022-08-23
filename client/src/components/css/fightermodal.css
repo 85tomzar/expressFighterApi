@@ -72,6 +72,22 @@ i:hover::after {
   overflow: hidden;
   transition: 400ms;
 }
+
+.edit-container {
+  text-transform: uppercase;
+  width: 50%;
+  top: 0;
+  padding-top: 1rem;
+  transition: top 400ms;
+  position: absolute;
+  right: 0;
+}
+
+.hide-edit {
+  top: -40rem;
+  transform: top 400ms;
+}
+
 h2 {
   margin: 0;
   font-size: 2.5rem;
