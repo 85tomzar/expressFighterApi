@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
+import Fighter from "../models/FighterModel";
 import CreateFighterModal from "./CreateFighterModal";
-
 import "./css/Header.css";
 
-export default function Header() {
+interface Props {
+  handleNewFighter: (fighter: Fighter) => void;
+}
+
+export default function Header({ handleNewFighter }: Props) {
   const [createModalOpen, setCreateModalOpen] = useState(false);
 
   return (
@@ -28,7 +32,10 @@ export default function Header() {
         onHide={() => setCreateModalOpen(false)}
         onEscapeKeyDown={() => setCreateModalOpen(false)}
       >
-        <CreateFighterModal onHide={() => setCreateModalOpen(false)} />
+        <CreateFighterModal
+          onHide={() => setCreateModalOpen(false)}
+          handleNewFighter={handleNewFighter}
+        />
       </Modal>
     </header>
   );

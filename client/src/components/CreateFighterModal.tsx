@@ -6,12 +6,15 @@ import FighterForm from "./FighterForm";
 
 interface Props {
   onHide: () => void;
+  handleNewFighter: (fighter: Fighter) => void;
 }
 
-export default function CreateFighterModal({ onHide }: Props) {
-  const [fighter, setFighter] = useState({} as Fighter);
-
+export default function CreateFighterModal({
+  onHide,
+  handleNewFighter,
+}: Props) {
   const handleSubmit = async (newFighter: Fighter) => {
+    handleNewFighter(newFighter);
     console.log({ newFighter });
     //TODO - spinner and result messages
     try {

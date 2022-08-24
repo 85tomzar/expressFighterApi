@@ -1,21 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Container, Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/app.css";
-import FighterCard from "./FighterCard";
 import Fighter from "../models/FighterModel";
-import FighterModal from "./FighterModal";
 import Header from "./Header";
+import Main from "./Main";
 
 function App() {
   const [fighters, setFighters] = useState([] as Fighter[]);
-  const [selectedFighter, setSelectedFighter] = useState<Fighter>();
-  const [fighterModalOpen, setFighterModalOpen] = useState(false);
-
-  const handleOnHide = () => {
-    setFighterModalOpen(false);
-    setSelectedFighter(undefined);
-  };
 
   useEffect(() => {
     fetch("http://localhost:3000/api/fighters")
@@ -23,40 +14,43 @@ function App() {
       .then((data) => {
         setFighters(data);
       });
-  }, [selectedFighter]);
+  }, []);
 
-  const handleClick = (fighter: Fighter): void => {
-    setSelectedFighter(fighter);
-    setFighterModalOpen(true);
+  const handleNewFighter = (newFighter: Fighter) => {
+    setFighters((prevFighters) => {
+      const newFighters = [newFighter, ...prevFighters];
+      return newFighters;
+    });
   };
 
-  const fighterCards = fighters.map((fighter: Fighter) => {
-    return (
-      <FighterCard key={fighter.id} onclick={handleClick} fighter={fighter} />
-    );
-  });
+  const handleDeleteFighter = (fighterToDelete: Fighter) => {
+    setFighters((prevFighters) => {
+      const fighterIndex = prevFighters.findIndex(
+        (f) => f.id === fighterToDelete.id
+      );
+      prevFighters.splice(fighterIndex, 1);
+      return prevFighters;
+    });
+  };
+
+  const handleChangeFighter = (fighterToUpdate: Fighter) => {
+    setFighters((prevFighters) => {
+      const fighterIndex = prevFighters.findIndex(
+        (f) => f.id === fighterToUpdate.id
+      );
+      prevFighters[fighterIndex] = fighterToUpdate;
+      return prevFighters;
+    });
+  };
 
   return (
     <>
-      <Header />
-      <main>
-        <Container className="d-flex justify-content-center">
-          <div className="fighter-container">{fighterCards}</div>
-        </Container>
-        <Modal
-          size="lg"
-          show={fighterModalOpen}
-          onHide={handleOnHide}
-          onEscapeKeyDown={handleOnHide}
-        >
-          {selectedFighter && (
-            <FighterModal
-              fighterId={selectedFighter.id}
-              onHide={handleOnHide}
-            />
-          )}
-        </Modal>
-      </main>
+      <Header handleNewFighter={handleNewFighter} />
+      <Main
+        fighters={fighters}
+        handleDeleteFighter={handleDeleteFighter}
+        handleChangeFighter={handleChangeFighter}
+      />
     </>
   );
 }

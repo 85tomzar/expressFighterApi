@@ -8,14 +8,21 @@ import FighterInfo from "./FighterInfo";
 interface Props {
   fighterId: string;
   onHide: () => void;
+  handleDeleteFighter: (fighterToDelete: Fighter) => void;
+  handleChangeFighter: (fighterToChange: Fighter) => void;
 }
 
-export default function FighterModal(props: Props) {
+export default function FighterModal({
+  fighterId,
+  onHide,
+  handleDeleteFighter,
+  handleChangeFighter,
+}: Props) {
   const [editMode, setEditMode] = useState(false);
   const [fighter, setFighter] = useState<Fighter>();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/fighters/${props.fighterId}`)
+    fetch(`http://localhost:3000/api/fighters/${fighterId}`)
       .then((response) => response.json())
       .then((data) => {
         setFighter(data);
@@ -26,6 +33,7 @@ export default function FighterModal(props: Props) {
   const deleteFighter = async (e: any) => {
     e.preventDefault();
 
+    handleDeleteFighter(fighter);
     try {
       let res = await fetch(
         `http://localhost:3000/api/fighters/${fighter.id}`,
@@ -36,7 +44,7 @@ export default function FighterModal(props: Props) {
       let resJson = await res.json();
       if (res.status === 200) {
         console.log("success!");
-        props.onHide();
+        onHide();
       } else {
         console.log("Some error occured");
       }
@@ -44,11 +52,12 @@ export default function FighterModal(props: Props) {
       console.log(err);
     }
 
-    props.onHide();
+    onHide();
   };
 
   const handleSubmit = async (fighter: Fighter) => {
     setFighter(fighter);
+    handleChangeFighter(fighter);
     try {
       let res = await fetch(
         `http://localhost:3000/api/fighters/${fighter.id}`,
