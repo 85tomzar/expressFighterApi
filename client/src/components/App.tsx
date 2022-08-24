@@ -9,9 +9,14 @@ import CreateFighterModal from "./CreateFighterModal";
 
 function App() {
   const [fighters, setFighters] = useState([] as Fighter[]);
-  const [selectedFighter, setSelectedFighter] = useState({} as Fighter);
+  const [selectedFighter, setSelectedFighter] = useState<Fighter>();
   const [fighterModalOpen, setFighterModalOpen] = useState(false);
   const [createModalOpen, setCreateModalOpen] = useState(false);
+
+  const handleOnHide = () => {
+    setFighterModalOpen(false);
+    setSelectedFighter(undefined);
+  };
 
   useEffect(() => {
     fetch("http://localhost:3000/api/fighters")
@@ -19,7 +24,7 @@ function App() {
       .then((data) => {
         setFighters(data);
       });
-  }, []);
+  }, [selectedFighter]);
 
   const handleClick = (fighter: Fighter): void => {
     setSelectedFighter(fighter);
@@ -56,13 +61,15 @@ function App() {
         <Modal
           size="lg"
           show={fighterModalOpen}
-          onHide={() => setFighterModalOpen(false)}
-          onEscapeKeyDown={() => setFighterModalOpen(false)}
+          onHide={handleOnHide}
+          onEscapeKeyDown={handleOnHide}
         >
-          <FighterModal
-            fighter={selectedFighter}
-            onHide={() => setFighterModalOpen(false)}
-          />
+          {selectedFighter && (
+            <FighterModal
+              fighterId={selectedFighter.id}
+              onHide={handleOnHide}
+            />
+          )}
         </Modal>
         <Modal
           size="lg"
