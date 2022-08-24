@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Form, Button } from "react-bootstrap";
 import Fighter from "../models/FighterModel";
+import "./css/fightermodal.css";
 
 export default function CreateFighterModal() {
   const [fighter, setFighter] = useState({} as Fighter);
@@ -39,7 +40,6 @@ export default function CreateFighterModal() {
             <Form.Label>Name</Form.Label>
             <Form.Control
               type="text"
-              placeholder={fighter.name}
               name="name"
               onChange={handleChange}
               required
@@ -49,7 +49,6 @@ export default function CreateFighterModal() {
             <Form.Label>Nickname</Form.Label>
             <Form.Control
               type="text"
-              placeholder={fighter.nickname}
               name="nickname"
               onChange={handleChange}
               required
@@ -59,7 +58,6 @@ export default function CreateFighterModal() {
             <Form.Label>Record</Form.Label>
             <Form.Control
               type="text"
-              placeholder={fighter.record}
               name="record"
               onChange={handleChange}
               required
@@ -69,7 +67,6 @@ export default function CreateFighterModal() {
             <Form.Label>Division</Form.Label>
             <Form.Control
               type="text"
-              placeholder={fighter.division}
               name="division"
               onChange={handleChange}
               required
@@ -79,7 +76,6 @@ export default function CreateFighterModal() {
             <Form.Label>Age</Form.Label>
             <Form.Control
               type="text"
-              placeholder={fighter.age}
               name="age"
               onChange={handleChange}
               required
@@ -89,7 +85,6 @@ export default function CreateFighterModal() {
             <Form.Label>Height</Form.Label>
             <Form.Control
               type="text"
-              placeholder={fighter.height}
               name="height"
               onChange={handleChange}
               required
@@ -99,7 +94,6 @@ export default function CreateFighterModal() {
             <Form.Label>Weight</Form.Label>
             <Form.Control
               type="text"
-              placeholder={fighter.weight}
               name="weight"
               onChange={handleChange}
               required
@@ -109,7 +103,6 @@ export default function CreateFighterModal() {
             <Form.Label>Reach</Form.Label>
             <Form.Control
               type="text"
-              placeholder={fighter.reach}
               name="reach"
               onChange={handleChange}
               required
@@ -119,14 +112,14 @@ export default function CreateFighterModal() {
             <Form.Label>Image URL</Form.Label>
             <Form.Control
               type="text"
-              placeholder={fighter.imgURL}
               name="imgURL"
               onChange={handleChange}
               required
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
-            Save changes
+
+          <Button variant="secondary" type="submit">
+            Create
           </Button>
         </Form>
       </Modal.Body>
