@@ -4,7 +4,11 @@ import { nanoid } from "nanoid";
 import { fighterSchema } from "./resources/fighters/fighter.model";
 
 export const generateId = (req: Request, res: Response, next: NextFunction) => {
-  req.body = { id: nanoid(), ...req.body };
+  if (req.body.id === "") {
+    req.body.id = nanoid();
+  } else {
+    req.body = { id: nanoid(), ...req.body };
+  }
   next();
 };
 
