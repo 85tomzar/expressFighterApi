@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Modal, Form, Button } from "react-bootstrap";
+import { Modal} from "react-bootstrap";
 import Fighter from "../models/FighterModel";
 import "./css/fightermodal.css";
 import FighterForm from "./FighterForm";

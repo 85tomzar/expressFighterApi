@@ -17,32 +17,24 @@ export const getFighterById = (id: string) => {
 export const addFighter = (fighter: Fighter) => {
   const fighters = getFighters();
   fighters.push(fighter);
-  fs.writeFile(
-    "./src/resources/fighters/fighterdata.json",
-    JSON.stringify(fighters),
-    (err) => {
-      if (err) console.log(err);
-    }
-  );
+  save(fighters);
 };
 
 export const updateFighterById = (fighter: Fighter) => {
   const fighters = getFighters();
   const fighterIndex = fighters.findIndex((f) => f.id === fighter.id);
   fighters[fighterIndex] = fighter;
-  fs.writeFile(
-    "./src/resources/fighters/fighterdata.json",
-    JSON.stringify(fighters),
-    (err) => {
-      if (err) console.log(err);
-    }
-  );
+  save(fighters);
 };
 
 export const deleteFighterById = (id: string) => {
   const fighters = getFighters();
   const fighterIndex = fighters.findIndex((f) => f.id === id);
   fighters.splice(fighterIndex, 1);
+  save(fighters);
+};
+
+const save = (fighters: Fighter[]) => {
   fs.writeFile(
     "./src/resources/fighters/fighterdata.json",
     JSON.stringify(fighters),
