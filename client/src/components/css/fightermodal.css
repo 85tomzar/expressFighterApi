@@ -170,3 +170,7 @@ h2 {
   margin-bottom: 0 !important;
   text-transform: uppercase;
 }
+
+.img-container {
+  width: 50%;
+}
