@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Modal, Form, Button } from "react-bootstrap";
+import React from "react";
+import { Modal } from "react-bootstrap";
 import Fighter from "../models/FighterModel";
 import "./css/fightermodal.css";
 import FighterForm from "./FighterForm";
@@ -14,9 +14,8 @@ export default function CreateFighterModal({
   handleNewFighter,
 }: Props) {
   const handleSubmit = async (newFighter: Fighter) => {
-    handleNewFighter(newFighter);
     console.log({ newFighter });
-    //TODO - spinner and result messages
+
     try {
       let res = await fetch(`http://localhost:3000/api/fighters/`, {
         method: "POST",
@@ -26,13 +25,13 @@ export default function CreateFighterModal({
       let resJson = await res.json();
       if (res.status === 201) {
         console.log("success!");
+        handleNewFighter(resJson);
       } else {
         console.log("Some error occured");
       }
     } catch (err) {
-      console.log("vafaaan" + err);
+      console.log(err);
     }
-
     onHide();
   };
 
