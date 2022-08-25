@@ -56,7 +56,9 @@ export default function FighterModal({ fighterId, onHide, handleDeleteFighter, h
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(fighter),
       });
+
       let resJson = await res.json();
+
       if (res.status === 200) {
         console.log("success!");
       } else {
@@ -76,8 +78,17 @@ export default function FighterModal({ fighterId, onHide, handleDeleteFighter, h
         <i className="fa-solid fa-pen-to-square" data-content="Edit fighter" onClick={() => setEditMode((prev) => !prev)}></i>
       </Modal.Header>
       <Modal.Body>
-        <img src={fighter.imgURL} alt={fighter.name} />
-
+        <div
+          className="img-container"
+          style={{
+            background: `url(${fighter.imgURL})`,
+            backgroundPosition: "center center",
+            backgroundSize: "contain",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          {/* <img src={fighter.imgURL} alt={fighter.name} /> */}
+        </div>
         <div className={editMode ? "edit-container" : "edit-container hide-edit"}>
           <FighterForm onSubmit={handleSubmit} btnTitle="Update" fighter={fighter} />
         </div>
