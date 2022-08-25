@@ -26,9 +26,7 @@ function App() {
   const handleDeleteFighter = (fighterToDelete: Fighter) => {
     setFighters((prevFighters) => {
       const fighters = [...prevFighters];
-      const fighterIndex = fighters.findIndex(
-        (f) => f.id === fighterToDelete.id
-      );
+      const fighterIndex = fighters.findIndex((f) => f.id === fighterToDelete.id);
       fighters.splice(fighterIndex, 1);
       return fighters;
     });
@@ -37,9 +35,7 @@ function App() {
   const handleChangeFighter = (fighterToUpdate: Fighter) => {
     setFighters((prevFighters) => {
       const modifiedFighters = [...prevFighters];
-      const fighterIndex = modifiedFighters.findIndex(
-        (f) => f.id === fighterToUpdate.id
-      );
+      const fighterIndex = modifiedFighters.findIndex((f) => f.id === fighterToUpdate.id);
       modifiedFighters[fighterIndex] = fighterToUpdate;
       return modifiedFighters;
     });
@@ -48,11 +44,7 @@ function App() {
   return (
     <>
       <Header handleNewFighter={handleNewFighter} />
-      <Main
-        fighters={fighters}
-        handleDeleteFighter={handleDeleteFighter}
-        handleChangeFighter={handleChangeFighter}
-      />
+      <Main fighters={fighters} handleDeleteFighter={handleDeleteFighter} handleChangeFighter={handleChangeFighter} />
     </>
   );
 }

@@ -2,9 +2,7 @@ import fs from "fs";
 import { Fighter } from "./fighter.model";
 
 export const getFighters = () => {
-  const fighterData = fs.readFileSync(
-    "./src/resources/fighters/fighterdata.json"
-  );
+  const fighterData = fs.readFileSync("./src/resources/fighters/fighterdata.json");
   const fighters: Fighter[] = JSON.parse(fighterData.toString());
   return fighters;
 };
@@ -35,11 +33,7 @@ export const deleteFighterById = (id: string) => {
 };
 
 const save = (fighters: Fighter[]) => {
-  fs.writeFile(
-    "./src/resources/fighters/fighterdata.json",
-    JSON.stringify(fighters),
-    (err) => {
-      if (err) console.log(err);
-    }
-  );
+  fs.writeFile("./src/resources/fighters/fighterdata.json", JSON.stringify(fighters), (err) => {
+    if (err) console.log(err);
+  });
 };

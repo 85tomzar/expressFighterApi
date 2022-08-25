@@ -12,11 +12,7 @@ export const generateId = (req: Request, res: Response, next: NextFunction) => {
   next();
 };
 
-export const validateFighterBody = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const validateFighterBody = (req: Request, res: Response, next: NextFunction) => {
   const result = fighterSchema.validate(req.body);
   if (result.error) {
     res.status(400).json(result.error.message);
@@ -30,20 +26,11 @@ export const logger = (req: Request, res: Response, next: NextFunction) => {
   next();
 };
 
-export const errorHandler = (
-  err: Error,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const errorHandler = (err: Error, req: Request, res: Response, next: NextFunction) => {
   console.log(err);
   res.status(500).json(err.message);
 };
 
-export const notFoundHandler = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const notFoundHandler = (req: Request, res: Response, next: NextFunction) => {
   res.status(404).json("Resource does not exist.");
 };

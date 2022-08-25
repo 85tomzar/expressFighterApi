@@ -9,10 +9,7 @@ interface Props {
   handleNewFighter: (fighter: Fighter) => void;
 }
 
-export default function CreateFighterModal({
-  onHide,
-  handleNewFighter,
-}: Props) {
+export default function CreateFighterModal({ onHide, handleNewFighter }: Props) {
   const handleSubmit = async (newFighter: Fighter) => {
     console.log({ newFighter });
 

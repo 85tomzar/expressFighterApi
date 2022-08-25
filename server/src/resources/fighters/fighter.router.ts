@@ -1,12 +1,6 @@
 import express from "express";
 import { generateId, validateFighterBody } from "../../middlewares";
-import {
-  createFighter,
-  deleteFighter,
-  getAllFighters,
-  getFighter,
-  updateFighter,
-} from "./fighter.controller";
+import { createFighter, deleteFighter, getAllFighters, getFighter, updateFighter } from "./fighter.controller";
 
 const fighterRouter = express
   .Router()
