@@ -18,28 +18,30 @@ function App() {
 
   const handleNewFighter = (newFighter: Fighter) => {
     setFighters((prevFighters) => {
-      const newFighters = [newFighter, ...prevFighters];
+      const newFighters = [...prevFighters, newFighter];
       return newFighters;
     });
   };
 
   const handleDeleteFighter = (fighterToDelete: Fighter) => {
     setFighters((prevFighters) => {
-      const fighterIndex = prevFighters.findIndex(
+      const fighters = [...prevFighters];
+      const fighterIndex = fighters.findIndex(
         (f) => f.id === fighterToDelete.id
       );
-      prevFighters.splice(fighterIndex, 1);
-      return prevFighters;
+      fighters.splice(fighterIndex, 1);
+      return fighters;
     });
   };
 
   const handleChangeFighter = (fighterToUpdate: Fighter) => {
     setFighters((prevFighters) => {
-      const fighterIndex = prevFighters.findIndex(
+      const modifiedFighters = [...prevFighters];
+      const fighterIndex = modifiedFighters.findIndex(
         (f) => f.id === fighterToUpdate.id
       );
-      prevFighters[fighterIndex] = fighterToUpdate;
-      return prevFighters;
+      modifiedFighters[fighterIndex] = fighterToUpdate;
+      return modifiedFighters;
     });
   };
 
