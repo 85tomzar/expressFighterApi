@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Container, Modal } from "react-bootstrap";
 import FighterModal from "./FighterModal";
 import Fighter from "../models/FighterModel";

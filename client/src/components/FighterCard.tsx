@@ -1,4 +1,3 @@
-import React from "react";
 import { Card } from "react-bootstrap";
 import Fighter from "../models/FighterModel";
 import "./css/fightercard.css";

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import Fighter from "../models/FighterModel";
 import "./css/fightermodal.css";
