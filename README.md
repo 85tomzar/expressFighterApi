@@ -10,7 +10,7 @@ npm
 # Server
 ## Set up
 ```
-git clone https://github.com/85tomzar/expressFighterApi.git
+git clone https://github.com/ThaDDDen/expressFighterApi.git
 cd server
 npm install
 ```
