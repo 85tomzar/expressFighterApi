@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Toast } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import Fighter from "../models/FighterModel";
 import "./css/fightermodal.css";
 import FighterForm from "./FighterForm";
@@ -10,9 +10,6 @@ interface Props {
 }
 
 export default function CreateFighterModal({ onHide, handleNewFighter }: Props) {
-  const [showToast, setShowToast] = useState(false);
-  const [toastStatus, setToastStatus] = useState("success" || "danger");
-
   const handleSubmit = async (newFighter: Fighter) => {
     console.log({ newFighter });
 
@@ -27,8 +24,6 @@ export default function CreateFighterModal({ onHide, handleNewFighter }: Props) 
 
       if (res.status === 201) {
         console.log("success!");
-        setShowToast(true);
-        setToastStatus("success");
         handleNewFighter(resJson);
       } else {
         console.log("Some error occured");
@@ -36,15 +31,11 @@ export default function CreateFighterModal({ onHide, handleNewFighter }: Props) 
     } catch (err) {
       console.log(err);
     }
-    // onHide();
+    onHide();
   };
 
   return (
     <>
-      <Toast onClose={() => setShowToast(false)} show={showToast} bg={toastStatus}>
-        <Toast.Header>{toastStatus}!</Toast.Header>
-        <Toast.Body>this is a toast</Toast.Body>
-      </Toast>
       <Modal.Header closeButton closeVariant="white">
         Create new fighter
       </Modal.Header>

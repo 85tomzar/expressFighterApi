@@ -86,9 +86,7 @@ export default function FighterModal({ fighterId, onHide, handleDeleteFighter, h
             backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
           }}
-        >
-          {/* <img src={fighter.imgURL} alt={fighter.name} /> */}
-        </div>
+        ></div>
         <div className={editMode ? "edit-container" : "edit-container hide-edit"}>
           <FighterForm onSubmit={handleSubmit} btnTitle="Update" fighter={fighter} />
         </div>

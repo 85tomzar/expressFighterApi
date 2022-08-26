@@ -1,0 +1,32 @@
+.form-control {
+  background: none !important;
+  border: none;
+  border-bottom: 2px #c6c7c7 solid !important;
+  border-radius: 0;
+  padding: 0.1rem 0.5rem !important;
+  font-weight: 500;
+  width: 80% !important;
+  outline: none !important;
+  margin-bottom: 0.25rem;
+  color: #6c757d;
+}
+
+.form-control:focus {
+  background-color: #181818 !important;
+  border-bottom: 2px #c6c7c7 solid !important;
+  color: #6c757d;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.form-control::placeholder {
+  color: #6c757d;
+}
+
+.form-label {
+  display: block !important;
+  font-size: 0.8rem;
+  margin-bottom: 0 !important;
+  text-transform: uppercase;
+}

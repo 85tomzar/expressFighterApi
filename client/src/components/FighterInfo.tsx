@@ -1,5 +1,6 @@
 import React from "react";
 import Fighter from "../models/FighterModel";
+import "./css/fighterinfo.css";
 
 interface Props {
   fighter: Fighter;

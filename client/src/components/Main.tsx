@@ -3,6 +3,7 @@ import { Container, Modal } from "react-bootstrap";
 import FighterModal from "./FighterModal";
 import Fighter from "../models/FighterModel";
 import FighterCard from "./FighterCard";
+import "./css/main.css";
 
 interface Props {
   fighters: Fighter[];

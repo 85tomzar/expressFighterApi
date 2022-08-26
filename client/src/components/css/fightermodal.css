@@ -1,3 +1,4 @@
+/* buttons */
 i {
   font-size: 1.3rem;
   opacity: 0.5;
@@ -28,6 +29,8 @@ i:hover::after {
   display: inline;
 }
 
+/* Modal appearance */
+
 .modal-header {
   gap: 1rem;
   background: #000;
@@ -47,15 +50,7 @@ i:hover::after {
   height: 610px;
 }
 
-.modal-body img {
-  width: 50%;
-  transition: 200ms;
-}
-
-.small-img {
-  width: 20% !important;
-  transition: 200ms;
-}
+/* Modal content */
 
 .info-container {
   text-transform: uppercase;
@@ -86,89 +81,6 @@ i:hover::after {
 .hide-edit {
   top: -40rem;
   transform: top 400ms;
-}
-
-h2 {
-  margin: 0;
-  font-size: 2.5rem;
-  line-height: 2.5rem;
-}
-
-.nickname {
-  margin: 0.5rem 0;
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-.division {
-  margin: 0.5rem 0;
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-.first-name {
-  font-weight: 100;
-}
-
-.record,
-.age,
-.height,
-.weight,
-.reach {
-  margin: 0.5rem 3rem 0 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #6c757d;
-  border-width: 50%;
-  font-weight: 500;
-  padding-bottom: 0.3rem;
-}
-
-.record {
-  margin-top: 2.5rem;
-}
-
-.record > span:first-of-type,
-.age > span:first-of-type,
-.height > span:first-of-type,
-.weight > span:first-of-type,
-.reach > span:first-of-type {
-  color: #6c757d;
-  font-size: 0.8rem;
-}
-
-.form-control {
-  background: none !important;
-  border: none;
-  border-bottom: 2px #c6c7c7 solid !important;
-  border-radius: 0;
-  padding: 0.1rem 0.5rem !important;
-  font-weight: 500;
-  width: 80% !important;
-  outline: none !important;
-  margin-bottom: 0.25rem;
-  color: #6c757d;
-}
-
-.form-control:focus {
-  background-color: #181818 !important;
-  border-bottom: 2px #c6c7c7 solid !important;
-  color: #6c757d;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.form-control::placeholder {
-  color: #6c757d;
-}
-
-.form-label {
-  display: block !important;
-  font-size: 0.8rem;
-  margin-bottom: 0 !important;
-  text-transform: uppercase;
 }
 
 .img-container {
